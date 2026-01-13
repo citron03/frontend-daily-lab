@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skeleton UI</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: system-ui, sans-serif;
+      background: #f5f5f5;
+      padding: 2rem;
+    }
+    
+    h1 { margin-bottom: 2rem; color: #333; }
+    
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      max-width: 360px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    
+    /* ===========================================
+     * TODO: 스켈레톤 기본 스타일
+     * ===========================================
+     * 힌트: 
+     * - linear-gradient로 shimmer 효과
+     * - background-size로 그라데이션 넓게
+     * - animation으로 좌우 이동
+     */
+    .skeleton {
+      border-radius: 4px;
+      
+      /* TODO: 아래 속성들 구현 */
+      /* background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%); */
+      /* background-size: ??? */
+      /* animation: shimmer ???; */
+    }
+    
+    /* TODO: shimmer 키프레임 애니메이션 */
+    @keyframes shimmer {
+      /* 0% { background-position: ??? } */
+      /* 100% { background-position: ??? } */
+    }
+    
+    /* 스켈레톤 변형들 */
+    .skeleton-avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+    }
+    
+    .skeleton-text {
+      height: 16px;
+      margin-bottom: 8px;
+    }
+    
+    .skeleton-text.short { width: 60%; }
+    .skeleton-text.medium { width: 80%; }
+    .skeleton-text.full { width: 100%; }
+    
+    .skeleton-image {
+      width: 100%;
+      height: 180px;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+    
+    .flex { display: flex; gap: 1rem; align-items: center; margin-bottom: 1rem; }
+    .flex-col { display: flex; flex-direction: column; flex: 1; }
+    
+    .btn {
+      margin-top: 1rem;
+      padding: 0.75rem 1.5rem;
+      background: #667eea;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>💀 Skeleton UI</h1>
+  
+  <div class="card">
+    <!-- 이미지 영역 -->
+    <div class="skeleton skeleton-image"></div>
+    
+    <!-- 프로필 영역 -->
+    <div class="flex">
+      <div class="skeleton skeleton-avatar"></div>
+      <div class="flex-col">
+        <div class="skeleton skeleton-text medium"></div>
+        <div class="skeleton skeleton-text short"></div>
+      </div>
+    </div>
+    
+    <!-- 본문 영역 -->
+    <div class="skeleton skeleton-text full"></div>
+    <div class="skeleton skeleton-text full"></div>
+    <div class="skeleton skeleton-text medium"></div>
+  </div>
+  
+  <button class="btn" onclick="toggleContent()">콘텐츠 로드 시뮬레이션</button>
+
+  <script>
+    // TODO: 스켈레톤 ↔ 실제 콘텐츠 전환 로직 구현
+    // 힌트: 스켈레톤 숨기고 실제 콘텐츠 보여주기
+    
+    function toggleContent() {
+      console.log('구현하세요');
+    }
+  </script>
+</body>
+</html>

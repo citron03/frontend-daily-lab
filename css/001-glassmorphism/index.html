@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Glassmorphism CSS</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: system-ui, sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+    }
+    
+    /* 배경 장식 - 블러 효과를 보여주기 위한 요소 */
+    .bg-shape {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(60px);
+      z-index: 0;
+    }
+    .shape-1 { width: 300px; height: 300px; background: #ff6b6b; top: -50px; left: -50px; }
+    .shape-2 { width: 200px; height: 200px; background: #4ecdc4; bottom: -50px; right: -50px; }
+    
+    .container {
+      display: flex;
+      gap: 2rem;
+      z-index: 1;
+      position: relative;
+    }
+    
+    /* ===========================================
+     * TODO: 글래스모피즘 카드 스타일 구현
+     * ===========================================
+     * 핵심 속성 4가지:
+     * 1. 반투명 배경: background: rgba(255, 255, 255, ???)
+     * 2. 블러 효과: backdrop-filter: blur(???)
+     * 3. 은은한 테두리: border: 1px solid rgba(255, 255, 255, ???)
+     * 4. 부드러운 그림자: box-shadow: ???
+     */
+    .glass-card {
+      width: 300px;
+      padding: 2rem;
+      border-radius: 20px;
+      color: white;
+      
+      /* TODO: 위 4가지 속성 구현하세요 */
+    }
+    
+    .glass-card h2 { margin-bottom: 1rem; }
+    .glass-card p { line-height: 1.6; opacity: 0.9; }
+    
+    /* TODO: 다크 버전 카드 */
+    .glass-card.dark {
+      /* 힌트: rgba(0, 0, 0, ???) 사용 */
+    }
+    
+    /* TODO: 글래스 버튼 */
+    .glass-button {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      margin-top: 1rem;
+      border-radius: 30px;
+      color: white;
+      text-decoration: none;
+      cursor: pointer;
+      
+      /* 구현하세요 */
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-shape shape-1"></div>
+  <div class="bg-shape shape-2"></div>
+  
+  <div class="container">
+    <div class="glass-card">
+      <h2>🔮 Glassmorphism</h2>
+      <p>반투명 배경 + 블러 효과로 유리같은 느낌을 구현해보세요.</p>
+      <a href="#" class="glass-button">Learn More</a>
+    </div>
+    
+    <div class="glass-card dark">
+      <h2>🌙 Dark Version</h2>
+      <p>어두운 배경 버전도 만들어보세요.</p>
+      <a href="#" class="glass-button">Try Dark</a>
+    </div>
+  </div>
+</body>
+</html>

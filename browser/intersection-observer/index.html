@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Intersection Observer API</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: system-ui, sans-serif;
+      background: #1a1a2e;
+      color: white;
+    }
+    
+    .spacer {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      opacity: 0.5;
+    }
+    
+    .section {
+      min-height: 50vh;
+      padding: 3rem;
+      margin: 2rem;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      
+      /* TODO: 초기 상태 - 투명 + 아래에 위치 */
+      /* opacity: ??? */
+      /* transform: ??? */
+      /* transition: ??? */
+    }
+    
+    /* TODO: 화면에 들어왔을 때 스타일 */
+    .section.visible {
+      /* opacity: ??? */
+      /* transform: ??? */
+    }
+    
+    .lazy-image {
+      width: 100%;
+      max-width: 400px;
+      height: 200px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+    }
+    
+    .lazy-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+    
+    .lazy-image img.loaded { opacity: 1; }
+  </style>
+</head>
+<body>
+  <div class="spacer">⬇️ 스크롤해서 실험해보세요</div>
+  
+  <section class="section">
+    <h2>1. Fade In 애니메이션</h2>
+    <p>화면에 들어오면 자동으로 페이드인됩니다.</p>
+  </section>
+  
+  <section class="section">
+    <h2>2. Lazy Loading 이미지</h2>
+    <p>이미지는 화면에 근접해야 로딩을 시작합니다.</p>
+    <div class="lazy-image">
+      <img data-src="https://picsum.photos/seed/1/400/200" alt="Lazy loaded">
+    </div>
+  </section>
+  
+  <section class="section">
+    <h2>3. Threshold 옵션</h2>
+    <p>threshold: 0.5 → 요소의 50%가 보일 때 트리거</p>
+    <div class="lazy-image">
+      <img data-src="https://picsum.photos/seed/2/400/200" alt="Lazy loaded">
+    </div>
+  </section>
+  
+  <div class="spacer">🎉 끝!</div>
+
+  <script>
+    /**
+     * Intersection Observer 옵션:
+     * - root: 관찰 기준이 되는 요소 (기본값: viewport)
+     * - rootMargin: root 영역 확장/축소 (예: "100px")
+     * - threshold: 트리거 지점 (0~1, 또는 배열)
+     */
+    
+    // ===========================================
+    // 1. 섹션 Fade In 애니메이션
+    // ===========================================
+    // TODO: IntersectionObserver 생성
+    // - 섹션이 20% 보이면 'visible' 클래스 추가
+    
+    const sectionObserver = new IntersectionObserver(
+      (entries) => {
+        // 구현하세요
+        // 힌트: entry.isIntersecting, entry.target.classList
+      },
+      {
+        threshold: 0.2
+      }
+    );
+    
+    // TODO: 모든 .section 요소 관찰 시작
+    // document.querySelectorAll('.section').forEach(...)
+    
+    
+    // ===========================================
+    // 2. 이미지 Lazy Loading  
+    // ===========================================
+    // TODO: IntersectionObserver로 이미지 지연 로딩 구현
+    // - data-src를 src로 옮겨서 실제 로딩
+    // - rootMargin으로 미리 로딩 시작
+    
+    const imageObserver = new IntersectionObserver(
+      (entries) => {
+        // 구현하세요
+        // 힌트: img.dataset.src, img.src
+        // 힌트: 로딩 완료 후 unobserve
+      },
+      {
+        rootMargin: '100px'
+      }
+    );
+    
+    // TODO: 모든 [data-src] 이미지 관찰 시작
+    
+    
+    console.log(`
+    📦 Intersection Observer 장점:
+    - scroll 이벤트보다 성능이 좋음 (비동기)
+    - Reflow 발생 안 함
+    - 브라우저가 최적화
+    `);
+  </script>
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Storage API</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: system-ui, sans-serif;
+      background: #1a1a2e;
+      color: white;
+      padding: 2rem;
+    }
+    h1 { margin-bottom: 2rem; }
+    
+    .card {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 1.5rem;
+      border-radius: 12px;
+      margin-bottom: 1.5rem;
+      max-width: 500px;
+    }
+    
+    .card h2 { color: #00d9ff; margin-bottom: 1rem; }
+    
+    input, button {
+      padding: 0.75rem 1rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      margin-right: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    input { background: white; color: #333; }
+    button { background: #667eea; color: white; cursor: pointer; }
+    button.danger { background: #e74c3c; }
+    
+    .storage-view {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 1rem;
+      border-radius: 8px;
+      font-family: monospace;
+      margin-top: 1rem;
+      min-height: 50px;
+    }
+  </style>
+</head>
+<body>
+  <h1>💾 Web Storage API 실험</h1>
+  
+  <div class="card">
+    <h2>📦 localStorage</h2>
+    <input type="text" id="localKey" placeholder="key">
+    <input type="text" id="localValue" placeholder="value">
+    <button onclick="saveToLocal()">저장</button>
+    <button class="danger" onclick="clearLocal()">전체 삭제</button>
+    <div class="storage-view" id="localStorageView">비어있음</div>
+  </div>
+  
+  <div class="card">
+    <h2>⏰ sessionStorage</h2>
+    <input type="text" id="sessionKey" placeholder="key">
+    <input type="text" id="sessionValue" placeholder="value">
+    <button onclick="saveToSession()">저장</button>
+    <button class="danger" onclick="clearSession()">전체 삭제</button>
+    <div class="storage-view" id="sessionStorageView">비어있음</div>
+  </div>
+  
+  <div class="card">
+    <h2>🔍 localStorage vs sessionStorage</h2>
+    <ul style="padding-left: 1.5rem; line-height: 2;">
+      <li><strong>localStorage</strong>: 브라우저 닫아도 유지, 모든 탭 공유</li>
+      <li><strong>sessionStorage</strong>: 탭 닫으면 삭제, 탭마다 별도</li>
+      <li>둘 다 도메인별 약 5MB 제한</li>
+    </ul>
+  </div>
+
+  <script>
+    /**
+     * Web Storage API 메서드:
+     * - setItem(key, value)
+     * - getItem(key)
+     * - removeItem(key)
+     * - clear()
+     * - key(index)
+     * - length
+     */
+    
+    // ===========================================
+    // localStorage 조작
+    // ===========================================
+    
+    function saveToLocal() {
+      const key = document.getElementById('localKey').value;
+      const value = document.getElementById('localValue').value;
+      
+      // TODO: localStorage에 저장하세요
+      // 힌트: localStorage.setItem(key, value)
+      
+      renderLocalStorage();
+    }
+    
+    function renderLocalStorage() {
+      const view = document.getElementById('localStorageView');
+      
+      // TODO: localStorage 전체 내용을 표시하세요
+      // 힌트: localStorage.length, localStorage.key(i)
+      
+      view.innerHTML = '구현하세요';
+    }
+    
+    function clearLocal() {
+      // TODO: localStorage 전체 삭제
+      // 힌트: localStorage.clear()
+      
+      renderLocalStorage();
+    }
+    
+    
+    // ===========================================
+    // sessionStorage 조작
+    // ===========================================
+    
+    function saveToSession() {
+      const key = document.getElementById('sessionKey').value;
+      const value = document.getElementById('sessionValue').value;
+      
+      // TODO: sessionStorage에 저장하세요
+      
+      renderSessionStorage();
+    }
+    
+    function renderSessionStorage() {
+      const view = document.getElementById('sessionStorageView');
+      
+      // TODO: sessionStorage 전체 내용을 표시하세요
+      
+      view.innerHTML = '구현하세요';
+    }
+    
+    function clearSession() {
+      // TODO: sessionStorage 전체 삭제
+      
+      renderSessionStorage();
+    }
+    
+    
+    // ===========================================
+    // storage 이벤트 (다른 탭 감지)
+    // ===========================================
+    // TODO: 다른 탭에서 storage 변경시 감지
+    // 힌트: window.addEventListener('storage', ...)
+    
+    
+    // ===========================================
+    // 보너스: 객체/배열 저장하기
+    // ===========================================
+    /**
+     * Storage는 문자열만 저장하므로 JSON 변환 필요:
+     * 
+     * 저장: localStorage.setItem('user', JSON.stringify({ name: 'Alice' }))
+     * 읽기: JSON.parse(localStorage.getItem('user'))
+     */
+    
+    
+    // 초기화
+    renderLocalStorage();
+    renderSessionStorage();
+  </script>
+</body>
+</html>
